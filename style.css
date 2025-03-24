@@ -1,97 +1,62 @@
-/* General Body Style */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #0d0d0d;
-    color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #121212; /* Dark background */
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-/* Container */
 .container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 30px;
-    background: #1c1c1c;
-    border: 1px solid #ff0000;
-    border-radius: 10px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
-    text-align: center;
+  background: #1e1e1e; /* Slightly lighter card */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
 }
 
-/* Title */
 h1 {
-    color: #ff0000;
-    margin-bottom: 20px;
-    font-size: 2rem;
+  color: #f97316; /* Orange accent */
+  margin-bottom: 20px;
 }
 
-/* Labels */
-label {
-    display: block;
-    margin: 15px 0 5px;
-    font-weight: bold;
-}
-
-/* Input Fields and Select */
-input, select, textarea {
-    width: calc(100% - 20px);
-    padding: 10px;
-    margin: 5px 0 15px;
-    background: #2d2d2d;
-    color: #f5f5f5;
-    border: 1px solid #ff0000;
-    border-radius: 5px;
-    font-size: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    transition: border-color 0.2s;
-}
-
-input:focus, textarea:focus, select:focus {
-    outline: none;
-    border-color: #ff4d4d;
-}
-
-/* Buttons */
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
+input[type="text"], textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #333;
+  border-radius: 4px;
+  background: #2c2c2c;
+  color: #ffffff;
+  resize: none;
 }
 
 button {
-    flex: 1;
-    background: #ff0000;
-    color: #0d0d0d;
-    border: none;
-    padding: 12px 20px;
-    margin: 0 5px;
-    font-size: 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.2s;
-    box-shadow: 0 2px 10px rgba(255, 0, 0, 0.6);
-    font-weight: bold;
+  background: #f97316;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
 button:hover {
-    background: #ff4d4d;
+  background: #ff8c42;
 }
 
-/* Result Area */
-textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 600px) {
-    .container {
-        width: 90%;
-        padding: 20px;
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
+#result {
+  margin-top: 20px;
+  padding: 10px;
+  background: #2c2c2c;
+  border-radius: 4px;
+  color: #f97316;
+  text-align: left;
+  min-height: 50px;
 }
