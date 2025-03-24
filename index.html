@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="style.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Text Encryption Tool</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 </head>
 <body>
     <div class="container">
         <h1>Text Encryption Tool</h1>
 
-        <!-- Encryption Method Selection -->
         <label for="algorithm">Select Algorithm:</label>
         <select id="algorithm">
             <option value="AES">AES</option>
@@ -19,20 +19,19 @@
             <option value="RSA">RSA</option>
         </select>
 
-        <!-- Text Input -->
+        <label for="inputText">Enter Text:</label>
         <textarea id="inputText" placeholder="Enter text here..."></textarea>
 
-        <!-- Encryption Key -->
-        <input type="text" id="encryptionKey" placeholder="Enter encryption key (For AES/DES)">
+        <label for="encryptionKey">Enter Encryption Key:</label>
+        <input type="text" id="encryptionKey" placeholder="Enter key..." />
 
-        <!-- Buttons -->
-        <div class="buttons">
+        <div class="button-container">
             <button onclick="encryptText()">Encrypt</button>
             <button onclick="decryptText()">Decrypt</button>
         </div>
 
-        <!-- Result Display -->
-        <textarea id="result" placeholder="Result will appear here..." readonly></textarea>
+        <label for="result">Result:</label>
+        <textarea id="result" readonly></textarea>
     </div>
 
     <script src="script.js"></script>
