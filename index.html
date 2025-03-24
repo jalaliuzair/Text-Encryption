@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Text Encryption Tool</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="style.css">
+    <title>Text Encryption Tool</title>
 </head>
 <body>
     <div class="container">
         <h1>Text Encryption Tool</h1>
 
-        <!-- Algorithm Selection -->
+        <!-- Encryption Method Selection -->
+        <label for="algorithm">Select Algorithm:</label>
         <select id="algorithm">
-            <option value="aes">AES</option>
-            <option value="des">DES</option>
-            <option value="rsa">RSA</option>
+            <option value="AES">AES</option>
+            <option value="DES">DES</option>
+            <option value="RSA">RSA</option>
         </select>
 
         <!-- Text Input -->
-        <textarea id="textInput" placeholder="Enter text here..."></textarea>
+        <textarea id="inputText" placeholder="Enter text here..."></textarea>
 
-        <!-- Key Input (Not required for RSA) -->
-        <input id="keyInput" placeholder="Enter encryption key (AES/DES only)" />
+        <!-- Encryption Key -->
+        <input type="text" id="encryptionKey" placeholder="Enter encryption key (For AES/DES)">
 
-        <!-- Action Buttons -->
+        <!-- Buttons -->
         <div class="buttons">
-            <button onclick="encrypt()">Encrypt</button>
-            <button onclick="decrypt()">Decrypt</button>
+            <button onclick="encryptText()">Encrypt</button>
+            <button onclick="decryptText()">Decrypt</button>
         </div>
 
         <!-- Result Display -->
         <textarea id="result" placeholder="Result will appear here..." readonly></textarea>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
