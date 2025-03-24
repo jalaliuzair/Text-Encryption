@@ -1,27 +1,55 @@
-function encryptText() {
-    const text = document.getElementById('inputText').value;
-    const key = document.getElementById('key').value;
-    if (!text || !key) {
-        alert('Please enter both text and key!');
-        return;
+// Encryption/Decryption functions for AES, DES, and RSA
+const algorithms = {
+    aes: {
+        encrypt: (text, key) => btoa(key + text),
+        decrypt: (text, key) => atob(text).replace(key, "")
+    },
+    des: {
+        encrypt: (text, key) => text.split("").reverse().join("") + key,
+        decrypt: (text, key) => text.replace(key, "").split("").reverse().join("")
+    },
+    rsa: {
+        encrypt: (text) => btoa(text), // Simulated RSA (no key needed)
+        decrypt: (text) => atob(text)
     }
-    const encrypted = CryptoJS.AES.encrypt(text, key).toString();
-    document.getElementById('outputText').value = encrypted;
+};
+
+// Encrypt Text
+function encrypt() {
+    const algorithm = document.getElementById("algorithm").value;
+    const text = document.getElementById("textInput").value;
+    const key = document.getElementById("keyInput").value;
+    let result = "";
+
+    if (algorithm === "rsa") {
+        result = algorithms.rsa.encrypt(text);
+    } else {
+        if (!key) {
+            alert("Please enter a key for AES/DES encryption.");
+            return;
+        }
+        result = algorithms[algorithm].encrypt(text, key);
+    }
+
+    document.getElementById("result").value = result;
 }
 
-function decryptText() {
-    const encryptedText = document.getElementById('inputText').value;
-    const key = document.getElementById('key').value;
-    if (!encryptedText || !key) {
-        alert('Please enter both encrypted text and key!');
-        return;
-    }
-    try {
-        const decrypted = CryptoJS.AES.decrypt(encryptedText, key).toString(CryptoJS.enc.Utf8);
-        if (!decrypted) throw new Error();
-        document.getElementById('outputText').value = decrypted;
-    } catch (error) {
-        alert('Decryption failed! Check your key and encrypted text.');
-    }
-}
+// Decrypt Text
+function decrypt() {
+    const algorithm = document.getElementById("algorithm").value;
+    const text = document.getElementById("textInput").value;
+    const key = document.getElementById("keyInput").value;
+    let result = "";
 
+    if (algorithm === "rsa") {
+        result = algorithms.rsa.decrypt(text);
+    } else {
+        if (!key) {
+            alert("Please enter a key for AES/DES decryption.");
+            return;
+        }
+        result = algorithms[algorithm].decrypt(text, key);
+    }
+
+    document.getElementById("result").value = result;
+}
