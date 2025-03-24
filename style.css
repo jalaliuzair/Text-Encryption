@@ -1,81 +1,67 @@
-/* General Body Styling */
 body {
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background: #121212;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background: #0d0d0d;
+    color: #f5f5f5;
 }
 
-/* Container */
 .container {
+    max-width: 500px;
+    margin: 50px auto;
     background: #1c1c1c;
+    padding: 20px;
     border: 1px solid #ff0000;
     border-radius: 10px;
-    padding: 30px;
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
-    width: 100%;
-    max-width: 400px;
 }
 
-/* Title */
 h1 {
-    text-align: center;
     color: #ff0000;
-    margin-bottom: 20px;
+    text-align: center;
 }
 
-/* Inputs & Select */
-textarea, input, select {
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+select, textarea, input {
     width: 100%;
+    margin-top: 5px;
     padding: 10px;
-    margin: 10px 0;
+    background: #2d2d2d;
+    color: #f5f5f5;
     border: 1px solid #ff0000;
     border-radius: 5px;
-    background: #1c1c1c;
-    color: #fff;
-    font-size: 14px;
+    font-size: 1rem;
 }
 
-/* Buttons */
-.buttons {
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.button-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 button {
     flex: 1;
     background: #ff0000;
-    color: #fff;
+    color: #0d0d0d;
     border: none;
-    border-radius: 5px;
     padding: 12px;
     margin: 0 5px;
+    font-size: 1rem;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
     transition: background 0.2s;
 }
 
 button:hover {
-    background: #d40000;
-}
-
-/* Result Textarea */
-#result {
-    margin-top: 15px;
-    height: 80px;
-    resize: none;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-    .container {
-        width: 90%;
-        padding: 20px;
-    }
+    background: #ff4d4d;
 }
