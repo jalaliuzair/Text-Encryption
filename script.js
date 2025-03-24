@@ -1,54 +1,64 @@
-// Encryption/Decryption functions for AES, DES, and RSA
-const algorithms = {
-    aes: {
-        encrypt: (text, key) => btoa(key + text),
-        decrypt: (text, key) => atob(text).replace(key, "")
-    },
-    des: {
-        encrypt: (text, key) => text.split("").reverse().join("") + key,
-        decrypt: (text, key) => text.replace(key, "").split("").reverse().join("")
-    },
-    rsa: {
-        encrypt: (text) => btoa(text), // Simulated RSA (no key needed)
-        decrypt: (text) => atob(text)
-    }
-};
+// Encryption and Decryption Functions
 
-// Encrypt Text
-function encrypt() {
+function encryptText() {
     const algorithm = document.getElementById("algorithm").value;
-    const text = document.getElementById("textInput").value;
-    const key = document.getElementById("keyInput").value;
+    const inputText = document.getElementById("inputText").value;
+    const encryptionKey = document.getElementById("encryptionKey").value;
+
+    if (!inputText) {
+        alert("Please enter text to encrypt.");
+        return;
+    }
+
+    if (algorithm === "RSA") {
+        alert("RSA Encryption is not supported in this web-based version. Try a backend implementation!");
+        return;
+    }
+
+    if (!encryptionKey) {
+        alert("Please enter a key for AES/DES encryption.");
+        return;
+    }
+
     let result = "";
 
-    if (algorithm === "rsa") {
-        result = algorithms.rsa.encrypt(text);
-    } else {
-        if (!key) {
-            alert("Please enter a key for AES/DES encryption.");
-            return;
-        }
-        result = algorithms[algorithm].encrypt(text, key);
+    if (algorithm === "AES") {
+        result = btoa(encryptionKey + inputText);
+    } else if (algorithm === "DES") {
+        result = btoa(inputText.split("").reverse().join("") + encryptionKey);
     }
 
     document.getElementById("result").value = result;
 }
 
-// Decrypt Text
-function decrypt() {
+function decryptText() {
     const algorithm = document.getElementById("algorithm").value;
-    const text = document.getElementById("textInput").value;
-    const key = document.getElementById("keyInput").value;
+    const encryptedText = document.getElementById("inputText").value;
+    const encryptionKey = document.getElementById("encryptionKey").value;
+
+    if (!encryptedText) {
+        alert("Please enter text to decrypt.");
+        return;
+    }
+
+    if (algorithm === "RSA") {
+        alert("RSA Decryption is not supported in this web-based version. Try a backend implementation!");
+        return;
+    }
+
+    if (!encryptionKey) {
+        alert("Please enter a key for AES/DES decryption.");
+        return;
+    }
+
     let result = "";
 
-    if (algorithm === "rsa") {
-        result = algorithms.rsa.decrypt(text);
-    } else {
-        if (!key) {
-            alert("Please enter a key for AES/DES decryption.");
-            return;
-        }
-        result = algorithms[algorithm].decrypt(text, key);
+    if (algorithm === "AES") {
+        const decoded = atob(encryptedText);
+        result = decoded.replace(encryptionKey, "");
+    } else if (algorithm === "DES") {
+        const decoded = atob(encryptedText);
+        result = decoded.replace(encryptionKey, "").split("").reverse().join("");
     }
 
     document.getElementById("result").value = result;
